@@ -24,8 +24,8 @@ app.use(serveStatic(path.join(__dirname, 'public'), {
 function setCustomCacheControl (res, path) {
   if (serveStatic.mime.lookup(path) === 'text/html') {
     // Custom Cache-Control for HTML files
-    res.setHeader('Cache-Control', 'public, max-age=31536000')
-  }
+   // res.setHeader('Cache-Control', 'public, max-age=31536000')
+  }res.setHeader('Cache-Control', 'public, max-age=31536000')
 }
 
 
