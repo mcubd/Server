@@ -14,7 +14,7 @@ import {fileTypeFromStream} from 'file-type';
 
 import got from 'got';
 //const fbdl = require("fbdl-core");
-
+import serveStatic from 'server-static'
 
 
 
@@ -39,7 +39,12 @@ var mlts_collec = new mongoose.model('multis', multis_schema)
 
 var __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
-const httpServer = createServer(app);
+const staticFilesDir = path.join(__dirname, 'public');
+app.use(serveStatic(staticFilesDir));
+
+
+
+
 app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
@@ -52,7 +57,10 @@ app.set('trust proxy', true)
 // }));
 app.use(bodyParser.text({ type: "*/*", limit: '50mb' }));
 
-httpServer.listen(process.env.PORT || 8000);
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server is running on port `);
+});
 
 
 
@@ -479,3 +487,6 @@ const result = html.match(regex);
     .then(res.send);
   
 })
+
+
+
