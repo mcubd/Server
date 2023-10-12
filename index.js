@@ -9,13 +9,14 @@ var __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 // Define the path to your static files directory
-const staticFilesDir = path.join(__dirname, 'public');
+//const staticFilesDir = path.join(__dirname, 'public');
 
 // Use the serve-static middleware to serve static files
-app.use(serveStatic(staticFilesDir));
+//app.use(serveStatic(staticFilesDir));
+app.use(serveStatic(path.join(__dirname, 'public'), {
+  maxAge: '1d',
+ // setHeaders: setCustomCacheControl
+}))
 
-const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.listen(process.env.PORT || 3000, () => {});
