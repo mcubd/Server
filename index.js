@@ -14,7 +14,7 @@ const app = express();
 // Use the serve-static middleware to serve static files
 //app.use(serveStatic(staticFilesDir));
 app.use(serveStatic(path.join(__dirname, 'public'), {
-  maxAge: '1d',
+  maxAge: '600d',
   jj:'hola'
  // setHeaders: setCustomCacheControl
 }))
