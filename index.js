@@ -15,9 +15,18 @@ const app = express();
 //app.use(serveStatic(staticFilesDir));
 app.use(serveStatic(path.join(__dirname, 'public'), {
   maxAge: '600d',
-  jj:'hola'
- // setHeaders: setCustomCacheControl
+  
+  setHeaders: setCustomCacheControl
 }))
+
+
+
+function setCustomCacheControl (res, path) {
+  if (serveStatic.mime.lookup(path) === 'text/html') {
+    // Custom Cache-Control for HTML files
+    res.setHeader('Cache-Control', 'public, max-age=0')
+  }
+}
 
 
 app.listen(process.env.PORT || 3000, () => {});
