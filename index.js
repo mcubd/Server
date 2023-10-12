@@ -15,6 +15,7 @@ const app = express();
 //app.use(serveStatic(staticFilesDir));
 app.use(serveStatic(path.join(__dirname, 'public'), {
   maxAge: '1d',
+  jj:'hola'
  // setHeaders: setCustomCacheControl
 }))
 
