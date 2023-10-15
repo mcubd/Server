@@ -1,13 +1,14 @@
 import express from 'express';
-import serveStatic from 'serve-static';
-import path from 'path';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import * as fs from 'fs';
-import playwright from 'playwright'
+const express =require('express');
+var serveStatic =require('serve-static');
+var path =require('path');
+var { dirname }=require('path');
+var { fileURLToPath }=require('url');
+var  fs =require('fs');
+var playwright=require('playwright')
+
 var __dirname = dirname(fileURLToPath(import.meta.url));
-
-
+//import playwright from 'playwright'
 
 const app = express();
 
