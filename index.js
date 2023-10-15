@@ -5,7 +5,7 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import * as fs from 'fs';
 var __dirname = dirname(fileURLToPath(import.meta.url));
-import { chromium } from 'playwright'
+import playwright from 'playwright'
 
 
 const app = express();
@@ -32,7 +32,7 @@ function setCustomCacheControl (res, path) {
 }
 
 app.get('/hh',async (req,res)=>{
-var browser=await chromium.launch()
+var browser=await playwright.launchChromium()
 const page = await browser.newPage();
 await  page.goto('https://example.com');
 const title = await page.title();
