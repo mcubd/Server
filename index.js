@@ -5,7 +5,7 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import * as fs from 'fs';
 var __dirname = dirname(fileURLToPath(import.meta.url));
-import { chromium } from 'playwright-core'
+import { chromium } from 'playwright'
 
 
 const app = express();
