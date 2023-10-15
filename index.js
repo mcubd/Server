@@ -5,6 +5,8 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import * as fs from 'fs';
 var __dirname = dirname(fileURLToPath(import.meta.url));
+import { chromium } from 'playwright-core'
+
 
 const app = express();
 
@@ -28,6 +30,15 @@ function setCustomCacheControl (res, path) {
     res.setHeader('Heady', serveStatic.mime.lookup(path))
   
 }
+
+app.get('/hh',async (req,res)=>{
+var browser=await chromium.launch()
+const page = await browser.newPage();
+await  page.goto('https://example.com');
+const title = await page.title();
+console.log(title)
+res.send(title)
+})
 
 
 app.listen(process.env.PORT || 3000, () => {});
