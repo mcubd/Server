@@ -4,8 +4,9 @@ import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import * as fs from 'fs';
-var __dirname = dirname(fileURLToPath(import.meta.url));
 import playwright from 'playwright'
+var __dirname = dirname(fileURLToPath(import.meta.url));
+
 
 
 const app = express();
