@@ -4,9 +4,9 @@ import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import * as fs from 'fs';
-import playwright from 'playwright'
+//import playwright from 'playwright'
 var __dirname = dirname(fileURLToPath(import.meta.url));
-
+import puppeteer from "puppeteer";
 
 //var __dirname = dirname(fileURLToPath(import.meta.url));
 //import playwright from 'playwright'
@@ -35,12 +35,18 @@ function setCustomCacheControl (res, path) {
 }
 
 app.get('/hh',async (req,res)=>{
-var browser=await playwright.launchChromium()
-const page = await browser.newPage();
-await  page.goto('https://example.com');
-const title = await page.title();
-console.log(title)
-res.send(title)
+const URL = "https://pptr.dev/";
+
+const main = async () => {
+  const browser = await puppeteer.connect({
+    browserWSEndpoint: `wss://chrome.browserless.io?token=677cf9f1-7c6f-4a8e-876e-6e0762f556f5`
+  });
+  const page = await browser.newPage();
+  await page.goto(URL);
+
+  return page.screenshot();
+}
+  
 })
 
 
